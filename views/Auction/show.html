@@ -1,0 +1,41 @@
+{% extends "_global/index.html" %}
+
+{% block main %}
+<!--    <a href="#" onclick="addBookmark({{ auction.auction_id }})">Add to bookmark</a>-->
+    <h1>{{ auction.title|escape }}</h1>
+<img src="{{ BASE }}assets/uploads/{{ auction.image_path }}" alt="Velika slika - {{ auction.auction_id }}">
+    <p>Opis:</p>
+    <p>{{ auction.description|escape }}</p>
+<!--    <p>Pocetna cena: {{ auction.starting_price|escape }} RSD</p>-->
+<!--    <p>Trenutna cena: {{ lastOfferPrice|escape }} RSD</p>-->
+    <p>Cena: <b><span id="current_auction_price">{{ lastOfferPrice }}</span> EUR</b>
+        {% if showBidForm == 1 %}
+            <div class="form-group">
+                <input type="hidden" id="auction_id" value="{{ auction.auction_id }}">
+                <input type="number" min="{{ lastOfferPrice + 2.0 }}" step="0.01" value="{{ lastOfferPrice + 2.0 }}" id="offer_price" class="form-control">
+                <button type="button" onclick="auctionBid();" class="btn btn-primary">
+                    <i class="fa fa-money"></i> Licitiraj
+                </button>
+            </div>
+        {% elseif showBidForm == 2 %}
+            <div>
+                <p>Morate biti ulogovani da date ponudu na aukciju!</p>
+            </div>
+        {% else %}
+            <div>
+                <p>Nazalost ova aukcija je istekla, ne mozete da ostavite ponudu!</p>
+            </div>
+        {% endif %}
+
+    </p>
+    <p>Datum pocetka aukcije: <b>{{ auction.created_at|date('j.n.Y.') }}</b></p>
+    <p>Datum kraja aukcije: <b>{{ auction.expires_at|date('j.n.Y.') }}</b></p>
+    <div id="message"></div>
+
+{% endblock %}
+
+{% block naslov %}
+
+{{ category.title|escape }}
+
+{% endblock %}

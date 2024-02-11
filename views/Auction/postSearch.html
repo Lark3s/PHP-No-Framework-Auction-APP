@@ -1,0 +1,36 @@
+{% extends "_global/index.html" %}
+
+{% block main %}
+
+<ul>
+    {% for auction in auctions %}
+    <li class="auction row">
+        <div class="col-12 col-md-2">
+            <a href="{{ BASE }}auction/{{ auction.auction_id }}">
+                <img src="{{ BASE }}assets/uploads/{{ auction.auction_id }}" alt="Velika slika - {{ auction.auction_id }}" class="width-100-percent">
+            </a>
+        </div>
+
+        <div class="col-12 col-md-10">
+            <a href="{{ BASE }}auction/{{ auction.auction_id }}" class="auction-title">
+                {{ auction.title|escape }}
+            </a><br>
+        </div>
+
+        <div class="row">
+            <span class="col-6 col-md-4"> {{ auction.created_at|escape }} </span>
+            <span class="col-6 col-md-4"> {{ auction.expires_at|escape }} </span>
+            <span class="col-12 col-md-4"> {{ auction.starting_price|escape }} RSD</span>
+        </div>
+
+        <!--            <br>-->
+        <!--            <img src="#" alt="Mala slika 2- {{ auction.auction_id }}" class="auction-small-image image-2">-->
+        <!--            <img src="#" alt="Mala slika 1 - {{ auction.auction_id }}" class="auction-small-image image-1">-->
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
+
+{% block naslov %}
+Rezultati pretrage
+{% endblock %}

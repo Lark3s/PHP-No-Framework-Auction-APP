@@ -1,0 +1,29 @@
+.social-icons {
+    margin-bottom: 10px;
+}
+
+.social-icons a i.fa-brands {
+    display: inline-block;
+    color: #00c4de;
+    font-size: 16pt;
+    margin: 5px;
+}
+
+.category {
+    padding: 30px 0px;
+}
+
+.width-100-percent { width: 100%; }
+
+.chartDiv {
+    height: 60vh;
+    width: 60vw;
+}
+
+#main {
+    min-height: calc(100vh - 240px);
+}
+#hello {
+
+}
+

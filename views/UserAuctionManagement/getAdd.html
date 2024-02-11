@@ -1,0 +1,60 @@
+{% extends "_global/index.html" %}
+
+{% block main %}
+<!-- TODO: like in getEdit, make a form validation function -->
+<div class="row">
+    <div class="options">
+        <a href="{{ BASE }}user/auctions">List my auctions</a>
+    </div>
+
+    <form class="auction-form" method="POST" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="title">Title: </label>
+            <input type="text" id="title" name="title" required class="form-control" pattern=".*[^\s]{3,}.*">
+        </div>
+
+        <div class="mb-3">
+            <label for="description">Description: </label>
+            <textarea id="description" name="description" required class="form-control" rows="10"></textarea> <!--TODO: Postoji JS plug in koji omogućava korišćenje pattern atributa za textarea ili možete sami definisati sa setCustomValidity i check Validity pomoću event handlera na event keyup npr. -->
+        </div>
+
+        <div class="mb-3">
+            <label for="starting_price">Starting price: </label>
+            <input type="number" id="starting_price" name="starting_price" required class="form-control" min="0.01" step="0.01">
+        </div>
+
+<!--        <div class="mb-3">-->
+<!--            <label for="starts_at">Starts at: </label>-->
+<!--            <input type="datetime-local" id="starts_at" name="starts_at" required class="form-control">-->
+<!--        </div>-->
+
+        <div class="mb-3">
+            <label for="expires_at">Ends at: </label>
+            <input type="datetime-local" id="expires_at" name="expires_at" required class="form-control">
+        </div>
+
+        <div class="mb-3">
+            <label for="category_id">Auctions category: </label>
+            <select class="form-control" name="category_id" id="category_id">
+                {% for category in categories %}
+                <option value="{{ category.category_id }}">
+                    {{ category.name }}
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="image">Image: </label>
+            <input type="file" id="image" name="image" required class="form-control" accept="image/jpeg, image/png">
+        </div>
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">
+                <i class="fa fa-plus"></i>
+                Add auction
+            </button>
+        </div>
+    </form>
+</div>
+{% endblock %}
