@@ -56,7 +56,7 @@ class AuctionController extends Controller {
     public function postSearch() {
         $auctionModel = new AuctionModel($this->getDatabaseConnection());
 
-        $q = filter_input(INPUT_POST, 'q', FILTER_UNSAFE_RAW); //TODO: takodje unsafe raw
+        $q = filter_input(INPUT_POST, 'q', FILTER_UNSAFE_RAW);
 
         $keywords = $this->normaliseKeywords($q);
 
