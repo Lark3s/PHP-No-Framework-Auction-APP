@@ -98,7 +98,7 @@
             $this->getEdit($auctionId);
 
             $editData = [
-                'title'          => filter_input(INPUT_POST, 'title', FILTER_UNSAFE_RAW), // TODO: A i ovde je gomila unsafe raw filtera
+                'title'          => filter_input(INPUT_POST, 'title', FILTER_UNSAFE_RAW),
                 'description'    => filter_input(INPUT_POST, 'description', FILTER_UNSAFE_RAW),
                 'starting_price' => sprintf("%.2f", filter_input(INPUT_POST, 'starting_price', FILTER_UNSAFE_RAW)),
                 'expires_at'        => filter_input(INPUT_POST, 'expires_at', FILTER_UNSAFE_RAW),
