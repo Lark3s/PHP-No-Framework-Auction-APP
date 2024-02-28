@@ -27,7 +27,7 @@
         public function postEdit($categoryId) {
             $categoryModel = $this->getEdit($categoryId);
 
-            $name = filter_input(INPUT_POST, 'name', FILTER_UNSAFE_RAW); //TODO: unsafe raw again.......
+            $name = filter_input(INPUT_POST, 'name', FILTER_UNSAFE_RAW); 
 
             $categoryModel->editById($categoryId, [
                 'name' => $name
@@ -41,7 +41,7 @@
         }
 
         public function postAdd() {
-            $name = filter_input(INPUT_POST, 'name', FILTER_UNSAFE_RAW); //TODO: unsafe raw here too.......
+            $name = filter_input(INPUT_POST, 'name', FILTER_UNSAFE_RAW);
             $categoryModel = new CategoryModel($this->getDatabaseConnection());
 
             $categoryId = $categoryModel->add([
