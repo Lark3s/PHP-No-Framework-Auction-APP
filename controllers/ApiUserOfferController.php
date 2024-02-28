@@ -11,7 +11,7 @@
     use PHPMailer\PHPMailer\Exception;
 
     class ApiUserOfferController extends UserApiController {
-        public function postMakeOffer() {  //TODO: Ovo bi moglo da bude vise metoda, za proveru, slanje i izvestavanje
+        public function postMakeOffer() {
             $userId = $this->getSession()->get('user_id');
 
             $auctionId = filter_input(INPUT_POST, 'auction_id', FILTER_SANITIZE_NUMBER_INT);
@@ -28,7 +28,7 @@
 
             if (!$auction->is_active) {
                 $this->set('error', -20002);
-                $this->set('message', 'This auction is not active.');  //TODO: ovo obavezno da se resi, nemam is_active u bazi
+                $this->set('message', 'This auction is not active.'); 
                 return;
             }
 
@@ -99,9 +99,6 @@
             $html .= htmlspecialchars($auction->title);
             $html .= '&quot; sa iznosom ' . sprintf("%.2f", $offer->price);
             $html .= '</body></html>';
-
-            //TODO: trebao bi da se napravi helper za slanje mejlova, ako to ostane kao funkcionalnost u kranjoj verziji
-            // ^- ovo je donekle reseno
 
             $event = new EmailEventHandler();
             $event->setSubject('Nova licitacija');
