@@ -43,7 +43,7 @@
             return $this->data;
         }
 
-        protected function redirect(string $path, int $code = 303) { //307 zadrzava originalni metod kojim je poslato, dok 303 koristi get, zato je bolji 303
+        protected function redirect(string $path, int $code = 303) {
             ob_clean();
             header('Location: ' . $path, true, $code);
             exit;
